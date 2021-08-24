@@ -1,0 +1,27 @@
+name: test-gui
+version: "1.0.0-test"
+summary: This APP is test to launch Error dialog using snap.
+description: |
+  This APP is test to launch Error dialog using snap.
+
+confinement: strict
+base: core20
+
+grade: stable
+
+parts:
+  test-app:
+    plugin: dump
+    source: .
+    stage-packages:
+      - libgtk-3-dev
+      - libgtk-3-0
+      - language-pack-en-base
+
+apps:
+  test-gui:
+    extensions: [gnome-3-38]
+    command: bin/test_gui
+    plugs:
+       - process-control
+       - x11
